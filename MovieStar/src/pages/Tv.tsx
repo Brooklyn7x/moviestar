@@ -1,11 +1,13 @@
-import MainContainer from "@/components/MainContainer";
-import { VideoBackground } from "@/components/VideoBackground";
-import VideoTitle from "@/components/VideoTitle";
+import { TvBackgroud } from "@/components/tv/TvBackgroud";
+import VideoTitle from "@/components/movie/VideoTitle";
 import { useTv } from "@/hooks/useTv";
 
 const Tv = () => {
   const { data: movies, isLoading, error } = useTv();
-  const { name, overview, id } = movies[1];
+  if (!movies || movies.length < 2)
+    return <div>No movies available or not enough data</div>;
+
+  const { name, overview, id } = movies[2];
 
   if (isLoading) return <div>Loading movies...</div>;
   if (error) return <div>Error fetching movies</div>;
@@ -13,7 +15,7 @@ const Tv = () => {
   return (
     <>
       <VideoTitle title={name} overview={overview} />
-      <VideoBackground id={id} />
+      <TvBackgroud id={id} />
     </>
   );
 };

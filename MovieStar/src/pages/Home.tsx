@@ -9,15 +9,12 @@ const Home = () => {
   if (isLoading) return <div>Loading movies...</div>;
   if (error) return <div>Error fetching movies</div>;
 
-  console.log(data);
-  
-  
-    return (
-      <>
-        <MainContainer data={data || []} />
-        <SecondaryContainer />
-      </>
-    );
+  return (
+    <>
+      <MainContainer data={data || []} />
+      <SecondaryContainer />
+    </>
+  );
 };
 
 export default Home;

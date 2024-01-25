@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { Play, Plus } from "lucide-react";
 
 interface VideoTitleProps {
@@ -24,17 +24,19 @@ const VideoTitle = ({
           <p>:</p>
           <p>{language}</p>
         </div>
-        <p className="hidden md:flex text-md text-wrap w-2/4">{overview ?? "no overview"}</p>
+        <p className="hidden md:flex sm:hidden text-md text-wrap w-2/4">
+          {overview ?? "no overview"}
+        </p>
         <p>Drama | Suspense | Robbery</p>
       </div>
 
       <div className="py-4 md:py-8 flex items-center">
         <div className="flex items-center gap-x-3">
-          <Button className="w-[100px] md:w-[350px] h-9 md:h-14 flex-1 rounded-sm bg-white dark:text-black text-lg gap-x-2  font-bold">
+          <Button className="w-[100px] md:w-[350px] h-12 md:h-14 flex-1 rounded-sm bg-white bg-opacity-25 text-white text-lg gap-x-2 font-bold">
             <Play className="h-5 w-5" />
-             Play
+            Play
           </Button>
-          <Button className="h-12 rounded-sm bg-white bg-opacity-25 text-md">
+          <Button className="h-12 md:h-14 rounded-sm bg-white bg-opacity-25 text-md text-white">
             <Plus className="h-5 w-5" />
           </Button>
         </div>

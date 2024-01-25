@@ -1,23 +1,24 @@
-import SimilarMovie from "@/components/movie/SimilarMovie";
-import { VideoBackground } from "@/components/movie/VideoBackground";
 import VideoTitle from "@/components/movie/VideoTitle";
-import { useMovieDetail } from "@/hooks/useMovieDetail";
 import { useNavigate, useParams } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Loader from "@/components/Loader";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTvDetail } from "@/hooks/useTvDetail";
+import { TvBackgroud } from "@/components/tv/TvBackgroud";
+import { SimilarTvShows } from "@/components/tv/SimilarTvShows";
 
 const MoreLikeThisTab = ({ id }) => (
   <div className="w-full overflow-hidden">
-    <SimilarMovie id={id} />
+    <SimilarTvShows id={id} />
   </div>
 );
 
-const MovieDetail = () => {
+const TvDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { data, isLoading, isError } = useMovieDetail(id);
+  const { data, isLoading, isError } = useTvDetail(id);
+  console.log(data);
 
   if (isLoading) return <Loader />;
   if (isError) return <div>Error loading movie details</div>;
@@ -32,23 +33,23 @@ const MovieDetail = () => {
           <ArrowLeft />
         </Button>
       </div>
-      <VideoTitle title={data?.original_title} overview={data?.overview} />
-      <VideoBackground id={data.id} />
+      <VideoTitle title={data?.name} overview={data?.overview} />
+      <TvBackgroud id={data.id} />
 
       <div className="pt-10 pl-5 md:pl-28 pr-3">
         <Tabs defaultValue="More Like This " className="w-full">
           <TabsList className="grid md:w-1/2 grid-cols-2 md:h-10 rounded-sm">
             <TabsTrigger value="More Like This ">More Like This</TabsTrigger>
-            <TabsTrigger value="Trailer & More ">Trailer</TabsTrigger>
+            <TabsTrigger value="Episodes">Episodes</TabsTrigger>
           </TabsList>
           <TabsContent value="More Like This ">
             <MoreLikeThisTab id={id} />
           </TabsContent>
-          <TabsContent value="Trailer & More ">No Trailer</TabsContent>
+          <TabsContent value="Episodes">Episodes</TabsContent>
         </Tabs>
       </div>
     </div>
   ) : null;
 };
 
-export default MovieDetail;
+export default TvDetail;

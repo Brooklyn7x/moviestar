@@ -33,7 +33,9 @@ export const VideoBackground = ({ id }: VideoBackgroundProps) => {
           allowFullScreen
         ></iframe>
       ) : (
-        <div>No trailer available</div>
+        <div className="w-screen aspect-video">
+          No Video 
+        </div>
       )}
     </div>
   );

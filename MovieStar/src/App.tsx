@@ -8,6 +8,7 @@ import Movie from "./pages/Movie";
 import Sport from "./pages/Sport";
 import MySpace from "./pages/MySpace";
 import MovieDetail from "./pages/MovieDetail";
+import TvDetails from "./pages/TvDetails";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
       <Route element={<RootLayout />}>
         <Route index element={<Home />} />
         <Route path="/movie/:id" element={<MovieDetail />} />
+        <Route path="/tv/:id" element={<TvDetails />} />
         <Route path="/my-space" element={<MySpace />} />
         <Route path="/search" element={<Search />} />
         <Route path="/movie" element={<Movie />} />
