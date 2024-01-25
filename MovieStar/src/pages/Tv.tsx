@@ -1,9 +1,23 @@
-import React from 'react'
+import MainContainer from "@/components/MainContainer";
+import { TvBackgroud } from "@/components/TvBackgroud";
+import { useTv } from "@/hooks/useTv";
+import React from "react";
 
 const Tv = () => {
-  return (
-    <div>Tv</div>
-  )
-}
+  const { data, isLoading, error } = useTv();
 
-export default Tv
+  if (isLoading) return <div>Loading movies...</div>;
+  if (error) return <div>Error fetching movies</div>;
+
+  console.log(data);
+  
+
+  return (
+    <>
+      <MainContainer data={data} />
+     
+    </>
+  );
+};
+
+export default Tv;

@@ -1,3 +1,4 @@
+import SimilarMovie from "@/components/SimilarMovie";
 import { VideoBackground } from "@/components/VideoBackground";
 import VideoTitle from "@/components/VideoTitle";
 import { useMovieDetail } from "@/hooks/useMovieDetail";
@@ -12,6 +13,7 @@ const MovieDetail = () => {
     <div>
       <VideoTitle title={data?.original_title} overview={data?.overview} />
       <VideoBackground id={data.id} />
+      <SimilarMovie id={id} />
     </div>
   );
 };

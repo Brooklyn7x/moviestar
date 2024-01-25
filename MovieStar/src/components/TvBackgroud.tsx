@@ -1,12 +1,13 @@
-import { useVideoTrailer } from "@/hooks/useVideoTrailer";
+import { useTvTrailer } from "@/hooks/useTvTrailer";
+
 import { LoaderIcon } from "lucide-react";
 
-interface VideoBackgroundProps {
+interface TvBackgroundProps {
   id: number | undefined;
 }
 
-export const VideoBackground = ({ id }: VideoBackgroundProps) => {
-  const { data, isLoading, error } = useVideoTrailer(id);
+export const TvBackgroud = ({ id }: TvBackgroundProps) => {
+  const { data, isLoading, error } = useTvTrailer(id);
 
   const trailer = data && data.length > 9 ? data?.[9] : data?.[0];
 
