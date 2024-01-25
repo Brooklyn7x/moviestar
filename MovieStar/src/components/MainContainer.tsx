@@ -8,12 +8,12 @@ interface MainContainerProps {
 }
 
 const MainContainer = ({ data: movies }: MainContainerProps) => {
-  const { name, overview, id } = movies[0];
+  const { name, overview, id } = movies[1];
 
   return (
     <div>
       <VideoTitle title={name} overview={overview} />
-      <TvBackgroud id={id} />
+      <VideoBackground id={id} />
     </div>
   );
 };

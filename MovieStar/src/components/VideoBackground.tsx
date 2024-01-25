@@ -23,7 +23,7 @@ export const VideoBackground = ({ id }: VideoBackgroundProps) => {
     : null;
 
   return (
-    <div>
+    <div className="pt-10 md:pt-0">
       {videoSrc ? (
         <iframe
           src={videoSrc}

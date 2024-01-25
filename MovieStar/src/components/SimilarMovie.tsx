@@ -7,10 +7,9 @@ interface SimilarMovieProps {
 
 const SimilarMovie = ({ id }: SimilarMovieProps) => {
   const { data } = useSimilarMovie(id);
-  console.log(data);
 
   return (
-    <div>
+    <div className="w-full">
       <MovieList data={data} name={"More Like This"} />
     </div>
   );

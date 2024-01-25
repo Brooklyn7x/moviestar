@@ -1,21 +1,19 @@
 import MainContainer from "@/components/MainContainer";
-import { TvBackgroud } from "@/components/TvBackgroud";
+import { VideoBackground } from "@/components/VideoBackground";
+import VideoTitle from "@/components/VideoTitle";
 import { useTv } from "@/hooks/useTv";
-import React from "react";
 
 const Tv = () => {
-  const { data, isLoading, error } = useTv();
+  const { data: movies, isLoading, error } = useTv();
+  const { name, overview, id } = movies[1];
 
   if (isLoading) return <div>Loading movies...</div>;
   if (error) return <div>Error fetching movies</div>;
 
-  console.log(data);
-  
-
   return (
     <>
-      <MainContainer data={data} />
-     
+      <VideoTitle title={name} overview={overview} />
+      <VideoBackground id={id} />
     </>
   );
 };

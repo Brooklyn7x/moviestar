@@ -43,7 +43,7 @@ export const sideBarLinks = [
 const Sidebar = () => {
   const { pathname } = useLocation();
   return (
-    <div className="w-24 h-screen left-0 top-0 fixed py-10 z-30 bg-gradient-to-r from-black">
+    <div className="hidden md:block w-24 h-screen left-0 top-0 fixed py-10 z-30 bg-gradient-to-r from-black">
       <div className="flex flex-col items-center gap-y-28">
         <Link to={"/"}>
           <Home />

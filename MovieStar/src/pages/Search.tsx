@@ -11,8 +11,6 @@ const Search = () => {
   const debounceSearch = useDebounce(input, 200);
   const { data } = useSearchMovie(debounceSearch);
 
-  console.log(data);
-
   const handleChange = useCallback((e: any) => {
     setInput(e.target.value);
   }, []);
