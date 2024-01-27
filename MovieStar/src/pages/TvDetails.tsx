@@ -7,8 +7,14 @@ import { Button } from "@/components/ui/button";
 import { useTvDetail } from "@/hooks/useTvDetail";
 import { TvBackgroud } from "@/components/tv/TvBackgroud";
 import { SimilarTvShows } from "@/components/tv/SimilarTvShows";
+import { TvEpisode } from "@/components/tv/TvEpisode";
+import Detail from "@/components/Detail";
 
-const MoreLikeThisTab = ({ id }) => (
+interface MoreLikeThisTabProps {
+  id: string | undefined;
+}
+
+export const MoreTvLikeThisTab = ({ id }: MoreLikeThisTabProps) => (
   <div className="w-full overflow-hidden">
     <SimilarTvShows id={id} />
   </div>
@@ -18,7 +24,16 @@ const TvDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { data, isLoading, isError } = useTvDetail(id);
-  console.log(data);
+  const {
+    name,
+    overview,
+    poster_path,
+    vote_average,
+    release_date,
+    status,
+    runtime,
+    genres,
+  } = data;
 
   if (isLoading) return <Loader />;
   if (isError) return <div>Error loading movie details</div>;
@@ -38,14 +53,29 @@ const TvDetail = () => {
 
       <div className="pt-10 pl-5 md:pl-28 pr-3">
         <Tabs defaultValue="More Like This " className="w-full">
-          <TabsList className="grid md:w-1/2 grid-cols-2 md:h-10 rounded-sm">
+          <TabsList className="grid md:w-1/2 grid-cols-3 md:h-10 rounded-sm">
             <TabsTrigger value="More Like This ">More Like This</TabsTrigger>
             <TabsTrigger value="Episodes">Episodes</TabsTrigger>
+            <TabsTrigger value="Details">Details</TabsTrigger>
           </TabsList>
           <TabsContent value="More Like This ">
-            <MoreLikeThisTab id={id} />
+            <MoreTvLikeThisTab id={id} />
           </TabsContent>
-          <TabsContent value="Episodes">Episodes</TabsContent>
+          <TabsContent value="Episodes">
+            <TvEpisode data={data} />
+          </TabsContent>
+          <TabsContent value="Episodes">
+            <Detail
+              original_title={name}
+              overview={overview}
+              genres={genres}
+              poster_path={poster_path}
+              release_date={release_date}
+              runtime={runtime}
+              status={status}
+              vote_average={vote_average}
+            />
+          </TabsContent>
         </Tabs>
       </div>
     </div>

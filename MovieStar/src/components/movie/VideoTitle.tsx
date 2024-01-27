@@ -1,4 +1,3 @@
-import React from "react";
 import { Button } from "../ui/button";
 import { Play, Plus } from "lucide-react";
 
@@ -32,7 +31,7 @@ const VideoTitle = ({
 
       <div className="py-4 md:py-8 flex items-center">
         <div className="flex items-center gap-x-3">
-          <Button className="w-[100px] md:w-[350px] h-12 md:h-14 flex-1 rounded-sm bg-white bg-opacity-25 text-white text-lg gap-x-2 font-bold">
+          <Button className="w-[100px] md:w-[350px] h-12 md:h-14 flex-1 rounded-sm bg-white bg-opacity-25 text-white text-lg gap-x-2 font-bold z-10">
             <Play className="h-5 w-5" />
             Play
           </Button>

@@ -1,14 +1,19 @@
+import VideoBackground from "./movie/VideoBackground";
 import VideoTitle from "./movie/VideoTitle";
-import { VideoBackground } from "./movie/VideoBackground";
-import { useNowPlaying } from "@/hooks/useNowPlaying";
-import { TvBackgroud } from "./tv/TvBackgroud";
+
+interface Movie {
+  original_title: string;
+  overview: string;
+  id: number;
+}
 
 interface MainContainerProps {
-  data: any[];
+  data: Movie[];
 }
 
 const MainContainer = ({ data: movies }: MainContainerProps) => {
-  const { original_title, overview, id } = movies[1];
+  const { original_title, overview, id } =
+    movies.length > 1 ? movies[3] : movies[0];
 
   return (
     <div>
